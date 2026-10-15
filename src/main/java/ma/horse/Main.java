@@ -1,17 +1,23 @@
 package ma.horse;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import ma.horse.obs.ObservableImpl;
+import ma.horse.obs.ObserverImpl;
+import ma.horse.obs.ObserverImpl2;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ObservableImpl obs = new ObservableImpl();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        ObserverImpl observer1 = new ObserverImpl();
+        ObserverImpl2 observer2 = new ObserverImpl2();
+
+        obs.subscribe(observer1);
+        obs.subscribe(observer2);
+
+        obs.setState(1);
+        obs.setState(10);
+        obs.unsubscribe(observer1);
+        obs.setState(100);
+
     }
 }
