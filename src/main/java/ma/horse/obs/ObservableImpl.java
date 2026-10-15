@@ -19,7 +19,7 @@ public class ObservableImpl implements Observable {
     @Override
     public void notifyObservers() {
         for (Observer obs : observers) {
-            obs.update(state);
+            obs.update(this);
         }
     }
     public void setState(int state) {
